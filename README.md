@@ -42,7 +42,13 @@ npx prisma init (Solo la primera vez)
 
 ### 3. Crea la BD en postgres
 Entra a postgres con tu contraseña (el nombre de usuario te aparece apenas lo abres) y haz click derecho sobre la columna Databases, ahi crea una con el nombre inventario.
-
+Luego de esto deberas configurar tu archivo .ENV que se creo al hacer npx prisma init. Lo deberas cambias asi:
+```bash
+Formato:
+DATABASE_URL="postgresql://usuario:contraseña@localhost:5432/inventario"
+Ejemplo:
+DATABASE_URL="postgresql://postgres:admin@localhost:5432/inventario"
+```
 ### 4. Aplica la migracion de tu base de datos
 Siempre que hayan cambios en la bd (el archivo schema.prisma) deberas aplicar los cambios con este codigo
 
