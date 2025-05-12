@@ -1,40 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 📦 Sistema de Gestión de Inventario - MVP
 
-## Getting Started
+Este proyecto es parte del Trabajo Práctico Integrador de la cátedra **Investigación Operativa – 2025**.  
+Se trata de un sistema web para gestionar artículos, proveedores, órdenes de compra y ventas, enfocado en lógica de inventario.
 
-First, run the development server:
+---
+
+## 🛠 Tecnologías utilizadas
+
+- [Next.js](https://nextjs.org/) — Framework de React para frontend y backend (API routes)
+- [Tailwind CSS](https://tailwindcss.com/) — Estilos utilitarios modernos
+- [Prisma ORM](https://www.prisma.io/) — ORM para PostgreSQL
+- [PostgreSQL](https://www.postgresql.org/) — Base de datos relacional
+- [Lucide React](https://lucide.dev/) — Íconos SVG
+
+---
+
+## ⚙️ Requisitos previos
+
+Antes de comenzar, asegurate de tener instalado:
+
+- [Node.js](https://nodejs.org/) (versión recomendada: LTS 18+)
+- [PostgreSQL](https://www.postgresql.org/) (usamos una base llamada `inventario`)
+- [Git](https://git-scm.com/)
+
+---
+
+## 🚀 Instrucciones para correr el proyecto
+
+### 1. Cloná el repositorio
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/TuteSeta/FullStock.git
+cd FullStock
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Instala dependencias
+```bash
+npm i (Cada vez que haces un pull por las dudas)
+npx prisma init (Solo la primera vez)
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### 3. Crea la BD en postgres
+Entra a postgres con tu contraseña (el nombre de usuario te aparece apenas lo abres) y haz click derecho sobre la columna Databases, ahi crea una con el nombre inventario.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### 4. Aplica la migracion de tu base de datos
+Siempre que hayan cambios en la bd (el archivo schema.prisma) deberas aplicar los cambios con este codigo
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```bash
+npx prisma migrate dev --name init
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 5. En caso de tener codigo de error generate
+```bash
+npx prisma generate
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+### 6. Inicializa el servidor de desarrollo
+```bash
+npm run dev
+```
